@@ -1,7 +1,11 @@
-<p>product-list works!</p>
 
-<div *ngFor="let product of products">
+<div class="product-index">
+<div *ngFor="let product of products" class="product-container">
 <div>
-    {{product.name}}
+
+<img (click)="onSelect(product)" src="{{product.url}}" style="  width: 320px;"/>
+
+   <p> {{product.name}} </p>
+</div>
 </div>
 </div>

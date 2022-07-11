@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
-import { Observable } from 'rxjs';
+import { Observable , filter} from 'rxjs';
 import {Product} from '../models/Product';
 
 @Injectable({
@@ -13,4 +13,5 @@ export class HttpService {
   getProducts(): Observable<[Product]> {
     return  this.http.get<[Product]>('../assets/data.json');
   }
+ 
 }

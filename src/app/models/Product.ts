@@ -4,6 +4,7 @@ export class Product{
     price:number;
     url:string;
     description:string;
+    amount?:number;
 
   constructor(){
         this.id=1,

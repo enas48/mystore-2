@@ -1,0 +1,35 @@
+
+<div class="cart-container">
+<div class="cart-panel col-5">
+    <div *ngFor="let product of shoppingProducts" >
+        <div  class="cart-item">
+            <img  src="{{product.url}}"/>
+            <div   class="cart-item-details" >    
+            <h4> <b>{{product.name}} </b></h4>
+            <p> ${{product.price}} </p>
+           <span>Amount: <input type="number" value="{{product.amount}}" min="1" max="10"></span>
+            </div>
+        </div>
+        <h2>Total : </h2>      
+        </div>
+      
+     </div>   
+
+
+<form class="col-5">
+    <div class="form-group form-margin">
+    <label for="name">Full name</label>
+    <input type="text" class="form-control" placeholder="(minimum 3 characters)">
+    </div>
+    <div class="form-group form-margin">
+    <label for="address">Address</label>
+    <input type="text" class="form-control" placeholder="(minimum 6 characters)">
+    </div>
+    <div class="form-group form-margin">
+    <label for="credit">Credit Card number</label>
+    <input type="text" class="form-control" placeholder="16-digit number">
+    </div>
+    <input type="submit" class="btn btn-primary">
+</form>
+
+</div>

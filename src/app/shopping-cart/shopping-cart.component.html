@@ -1,21 +1,17 @@
 
 <div class="cart-container">
-<div class="cart-panel col-5">
-    <div *ngFor="let product of shoppingProducts" >
-        <div  class="cart-item">
-            <img  src="{{product.url}}"/>
-            <div   class="cart-item-details" >    
-            <h4> <b>{{product.name}} </b></h4>
-            <p> ${{product.price}} </p>
-           <span>Amount: <input type="number" value="{{product.amount}}" min="1" max="10"></span>
-            </div>
-        </div>
-        <h2>Total : </h2>      
-        </div>
-      
-     </div>   
-
-
+<div class="cart-panel ">
+   
+    <div *ngIf="shoppingProducts && shoppingProducts.length">
+        <app-product-cart *ngFor="let product of shoppingProducts" [product]="product" 
+        (deleteProduct)="deleteProduct($event)"
+        (updateProduct)="updateProduct($event)"></app-product-cart>        
+        <h2>Total : ${{total}} </h2>   
+    </div>   
+     <div *ngIf="shoppingProducts && shoppingProducts.length ===0">
+        No products in cart
+     </div>
+    </div>
 <form class="col-5">
     <div class="form-group form-margin">
     <label for="name">Full name</label>

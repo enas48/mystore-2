@@ -9,7 +9,6 @@ export class CartService {
 
   constructor() { }
   getProductCart(){
-    console.log(this.productList);
     return this.productList;
 
   }
@@ -20,10 +19,29 @@ export class CartService {
   }
 
   deleteProductCart(product:Product){
-    const deletedProduct=this.productList.filter((p)=>{
-      return p.id !== product.id;
-    })
-    this.productList = deletedProduct;
+    this.productList =this.productList.filter(p=> p.id !== product.id)
     return this.productList;
   }
+
+  totalCost(){
+    let total=0;
+    this.productList.forEach((p)=>{
+      if (p.amount != undefined) {
+      total += p.price * p.amount;
+      }else{
+      total += p.price 
+      }
+    })
+    return total.toFixed(2);
+  }
+
+  updateProductCart(product:Product){
+    const index =  this.productList.findIndex(object => {
+      return object.id === product.id;
+    });
+  
+    this.productList[index] = product;
+    return  this.productList;
+  }
+
 }

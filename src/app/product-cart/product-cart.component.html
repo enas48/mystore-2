@@ -1,0 +1,10 @@
+
+        <div  class="cart-item">
+            <img  src="{{product.url}}"/>
+            <div   class="cart-item-details" >    
+            <h4> <b>{{product.name}} </b></h4>
+            <p> ${{product.price}} </p>
+           <span>Amount: <input type="number" value="{{product.amount}}" class="number-input"   max="10" (change)="onChange($event)"></span>
+            </div>
+        </div>
+ 

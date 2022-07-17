@@ -11,6 +11,7 @@ export class Product{
         this.name='',
         this.url='',
         this.description='',
-        this.price=1
+        this.price=1,
+        this.amount=1
       }
   }

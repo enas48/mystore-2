@@ -12,20 +12,22 @@
         No products in cart
      </div>
     </div>
-<form class="col-5">
-    <div class="form-group form-margin">
-    <label for="name">Full name</label>
-    <input type="text" class="form-control" placeholder="(minimum 3 characters)">
-    </div>
-    <div class="form-group form-margin">
-    <label for="address">Address</label>
-    <input type="text" class="form-control" placeholder="(minimum 6 characters)">
-    </div>
-    <div class="form-group form-margin">
-    <label for="credit">Credit Card number</label>
-    <input type="text" class="form-control" placeholder="16-digit number">
-    </div>
-    <input type="submit" class="btn btn-primary">
-</form>
+<div class="col-5">
+    <form #form="ngForm" (ngSubmit)="submitPayment()">
+        <div class="form-group form-margin">
+        <label for="fullname">Full name</label>
+        <input type="text" name="fullname" required minlength="3" class="form-control" placeholder="(minimum 3 characters)" [(ngModel)]="fullname" >
+        </div>
+        <div class="form-group form-margin">
+        <label for="address">Address</label>
+        <input type="text" name="address" required minlength="6" class="form-control" placeholder="(minimum 6 characters)" [(ngModel)]="address">
+        </div>
+        <div class="form-group form-margin">
+        <label for="credit">Credit Card number</label>
+        <input type="text" name="credit" required minlength="16"  class="form-control" placeholder="16-digit number" [(ngModel)]="credit">
+        </div>
+        <input type="submit" [disabled]="form.invalid" class="btn btn-primary">
+    </form>
+</div>
 
 </div>

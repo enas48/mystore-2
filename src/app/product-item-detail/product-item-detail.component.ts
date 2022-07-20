@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../services/http.service';
 import { ActivatedRoute} from '@angular/router';
 import {Product} from '../models/Product';
+import {CartService} from '../services/cart.service';
 
 @Component({
   selector: 'app-product-item-detail',
@@ -10,7 +11,8 @@ import {Product} from '../models/Product';
 })
 export class ProductItemDetailComponent implements OnInit {
   product:Product;
-  constructor(private route: ActivatedRoute, private httpService:HttpService) { 
+  amount:number =1;
+  constructor(private route: ActivatedRoute, private httpService:HttpService, private cartServices:CartService) { 
     this.product={ 
       id:1,
       name:'',
@@ -27,6 +29,14 @@ export class ProductItemDetailComponent implements OnInit {
       this.product= data.filter((p)=> p.id === id)[0];
   })
 
+  }
+  submitForm(): void{
+    const shoppingProduct=this.product;
+    shoppingProduct.amount=this.amount;
+    this.cartServices.addToCart(shoppingProduct);
+    alert(`Added To Cart!`)  
+    this.amount=1;
+   
   }
 
 }

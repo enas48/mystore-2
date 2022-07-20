@@ -11,6 +11,7 @@ export class ProductCartComponent implements OnInit {
   @Output() deleteProduct: EventEmitter<Product> = new EventEmitter;
   @Output() updateProduct: EventEmitter<Product> = new EventEmitter;
 
+
   constructor() {
     this.product={
       id:1,
@@ -30,7 +31,6 @@ export class ProductCartComponent implements OnInit {
     }
     const updatedProduct=this.product;
     updatedProduct.amount= amount;
-
     this.updateProduct.emit(updatedProduct);
 };
 }

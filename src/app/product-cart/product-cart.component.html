@@ -4,7 +4,7 @@
             <div   class="cart-item-details" >    
             <h4> <b>{{product.name}} </b></h4>
             <p> ${{product.price}} </p>
-           <span>Amount: <input type="number" value="{{product.amount}}" class="number-input"  min="0" max="10" (change)="onChange($event)"></span>
+            <span>Amount: <input type="number"  class="number-input" [ngModel]="amount" min="0" max="10" (ngModelChange)="onChange($event)"></span>
             </div>
         </div>
  

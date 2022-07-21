@@ -7,6 +7,7 @@ import {Product} from '../models/Product';
   styleUrls: ['./product-cart.component.css']
 })
 export class ProductCartComponent implements OnInit {
+  amount:any;
   @Input() product:Product;
   @Output() deleteProduct: EventEmitter<Product> = new EventEmitter;
   @Output() updateProduct: EventEmitter<Product> = new EventEmitter;
@@ -23,9 +24,11 @@ export class ProductCartComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.amount=this.product.amount;
   }
-  onChange(event: any) {
-    let amount=event.target.value;
+  onChange(value:any) {
+    this.amount=value;
+    let amount=this.amount;
     if(amount ==0){
       this.deleteProduct.emit(this.product);
     }

@@ -2,6 +2,9 @@
 
 MyStore is Angular application that allows users to view a list of available products to purchase, add them to a shopping cart, and ultimately complete the checkout process. 
 
+## installtion
+ `npm install` and `ng serve` to install and launch the application
+
 ## Getting Started
 
 To use these files, simply merge the folders into the root directory of your scaffolded Angular application.

@@ -23,7 +23,6 @@ export class ProductItemDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
    this.httpService.getProducts().subscribe((data)=>{
       let id  = parseInt(this.route.snapshot.params['id']);
       this.product= data.filter((p)=> p.id === id)[0];
@@ -33,9 +32,14 @@ export class ProductItemDetailComponent implements OnInit {
   submitForm(): void{
     const shoppingProduct=this.product;
     shoppingProduct.amount=this.amount;
-    this.cartServices.addToCart(shoppingProduct);
-    alert(`Added To Cart!`)  
-    this.amount=1;
+    const incart=this.cartServices.incart(shoppingProduct);
+    if(incart){
+     alert(`this item already in Cart!`);
+    }else{
+     this.cartServices.addToCart(shoppingProduct);
+     alert(`Added To Cart!`);
+     this.amount=1;
+    }
    
   }
 

@@ -17,10 +17,21 @@ export class CartService {
     this.productList.push(product);
     return this.productList;
   }
+  incart (product:Product){
+    const incart=   this.productList.filter((p)=>p.id===product.id);
+    if (incart.length===0){
+      return false;
+    }
+    return true;
+    }
 
   deleteProductCart(product:Product){
     this.productList =this.productList.filter(p=> p.id !== product.id)
     return this.productList;
+  }
+  deleteAllProducts(){
+    this.productList=[];
+    return  this.productList;
   }
 
   totalCost(){

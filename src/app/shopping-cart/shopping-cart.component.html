@@ -16,16 +16,47 @@
     <form #form="ngForm" (ngSubmit)="submitPayment()">
         <div class="form-group form-margin">
         <label for="fullname">Full name</label>
-        <input type="text" name="fullname" required minlength="3" class="form-control" placeholder="(minimum 3 characters)" [(ngModel)]="fullname" >
+        <input type="text" name="fullname" #name="ngModel" required minlength="3" class="form-control" placeholder="(minimum 3 characters)" [(ngModel)]="fullname" >
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert text-danger">
+    
+          <div *ngIf="name.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="name.errors?.['minlength']">
+           Name must be at least 3 characters long.
+          </div>
         </div>
+    </div>
         <div class="form-group form-margin">
         <label for="address">Address</label>
-        <input type="text" name="address" required minlength="6" class="form-control" placeholder="(minimum 6 characters)" [(ngModel)]="address">
-        </div>
+        <input type="text" name="address" #addresvalid="ngModel" required minlength="6" class="form-control" placeholder="(minimum 6 characters)" [(ngModel)]="address">
+        <div *ngIf="addresvalid.invalid && (addresvalid.dirty || addresvalid.touched)" class="alert text-danger">
+    
+            <div *ngIf="addresvalid.errors?.['required']">
+                Address is required.
+            </div>
+            <div *ngIf="addresvalid.errors?.['minlength']">
+                Address must be at least 6 characters long.
+            </div>
+          </div>    
+    </div>
         <div class="form-group form-margin">
         <label for="credit">Credit Card number</label>
-        <input type="text" name="credit" required minlength="16"  class="form-control" placeholder="16-digit number" [(ngModel)]="credit">
-        </div>
+        <input type="text" name="credit" 
+        #creditvalid="ngModel" pattern="^[ 0-9]*$" required minlength="16"  class="form-control" placeholder="16-digit number" [(ngModel)]="credit">
+        <div *ngIf="creditvalid.invalid && (creditvalid.dirty || creditvalid.touched)" class="alert text-danger">
+    
+            <div *ngIf="creditvalid.errors?.['required']">
+                credit is required.
+            </div>
+            <div *ngIf="creditvalid.errors?.['minlength']">
+                credit must be at least 16 characters long.
+            </div>
+            <div *ngIf="creditvalid.errors?.['pattern']">
+                credit must be number.
+            </div>
+          </div>  
+    </div>
         <input type="submit" [disabled]="form.invalid" class="btn btn-primary">
     </form>
 </div>

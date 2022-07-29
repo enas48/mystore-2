@@ -14,8 +14,14 @@ export class CartService {
   }
  
   addToCart(product:Product){
+    if(this.incart(product)){
+      alert(`this item already in Cart!`);
+      return false;
+    }else{
     this.productList.push(product);
+    alert(`Added To Cart!`);
     return this.productList;
+    }
   }
   incart (product:Product){
     const incart=   this.productList.filter((p)=>p.id===product.id);

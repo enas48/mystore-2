@@ -27,14 +27,8 @@ export class ProductItemComponent implements OnInit {
   submitForm(): void{
     const shoppingProduct=this.product;
     shoppingProduct.amount=this.amount;
-    const incart=this.cartServices.incart(shoppingProduct);
-   if(incart){
-    alert(`this item already in Cart!`);
-   }else{
     this.cartServices.addToCart(shoppingProduct);
-    alert(`Added To Cart!`);
     this.amount=1;
-   }
    
   }
  
